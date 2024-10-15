@@ -28,7 +28,7 @@ const Greetings = () => {
         "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/One%20O’Clock.png",
         "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Food/Tropical%20Drink.png",
       ]);
-    } else if (currentHour < 20) {
+    } else if (currentHour < 21) {
       setGreet("Good Evening! <br/><br/> Have you exercised today?");
       setImage([
         "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Six-Thirty.png",

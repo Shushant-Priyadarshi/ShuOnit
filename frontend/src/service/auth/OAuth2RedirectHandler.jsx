@@ -8,17 +8,13 @@ const OAuth2RedirectHandler = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Get the token from the URL
     const urlParams = new URLSearchParams(location.search);
     const token = urlParams.get("token");
 
     if (token) {
-      // Store the token securely in localStorage (or sessionStorage)
       localStorage.setItem("jwt", token);
       localStorage.setItem("auth",true)
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
-    
       navigate("/");
       window.location.reload();
     } else {

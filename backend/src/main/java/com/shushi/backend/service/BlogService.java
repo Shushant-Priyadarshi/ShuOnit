@@ -13,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -34,7 +35,7 @@ public class BlogService {
 
 
     //Create blog
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     @CacheEvict(value = "blogFeed",allEntries = true)
     public Blogs createBlog(String userId,Blogs blog) {
         String randomID = UUID.randomUUID().toString();
@@ -46,6 +47,7 @@ public class BlogService {
     }
 
     //get all approved blogs
+
     @Cacheable(value = "blogFeed")
     public Page<Blogs> getApprovedBlogs(int page,int size){
         Pageable pageable = PageRequest.of(page,size);
@@ -60,8 +62,8 @@ public class BlogService {
     }
 
     //approve blogs method
-    @Transactional
-    @CachePut(value = "blogFeed",key = "#result.id")
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @CacheEvict(value = "blogFeed",allEntries = true)
     public Blogs approveBlogs(String blogId){
         Blogs blog = getBlogById(blogId);
         blog.setApproved(true);

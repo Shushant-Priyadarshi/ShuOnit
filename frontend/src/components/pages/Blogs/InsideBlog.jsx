@@ -29,7 +29,7 @@ const InsideBlog = () => {
     <>
       <NavBar />
 
-      <div className="container h-screen mx-auto p-4 sm:p-6 md:p-8 lg:p-12">
+      <div className="container h-screen mx-auto p-4 sm:p-6 md:p-8 lg:p-12 overflow-y-auto">
         <h1 className="text-black text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">{blogData.title}</h1>
         
         <div className="text-black text-sm sm:text-2xl mb-2 sm:mb-4">

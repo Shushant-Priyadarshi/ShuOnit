@@ -60,6 +60,7 @@ function App() {
       ) : (
         <Suspense fallback={<PageLoading />}>
           <Toaster />
+          <div className="min-h-screen flex flex-col">
           <div className="flex-grow">
             <Routes>
               <Route path="/" element={<Home />} />
@@ -87,6 +88,7 @@ function App() {
              
               <Route path="*" element={<ErrorPage />} />
             </Routes>
+          </div>
           </div>
         </Suspense>
       )}
